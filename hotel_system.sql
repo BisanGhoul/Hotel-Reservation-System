@@ -1,13 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2021 at 10:50 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.26
+-- Generation Time: Dec 25, 2021 at 01:24 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -21,16 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `hotel_system`
 --
+CREATE DATABASE IF NOT EXISTS `hotel_system` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `hotel_system`;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `client`
 --
--- Creation: Dec 25, 2021 at 09:47 AM
--- Last update: Dec 25, 2021 at 09:47 AM
+-- Creation: Dec 25, 2021 at 11:50 AM
 --
 
+DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `CID` int(11) NOT NULL,
   `CNAME` varchar(32) DEFAULT NULL,
@@ -61,9 +62,10 @@ INSERT INTO `client` (`CID`, `CNAME`, `email`, `password`, `CNATIONALITY`, `CGEN
 --
 -- Table structure for table `client_bookhall`
 --
--- Creation: Dec 24, 2021 at 09:32 AM
+-- Creation: Dec 25, 2021 at 11:50 AM
 --
 
+DROP TABLE IF EXISTS `client_bookhall`;
 CREATE TABLE `client_bookhall` (
   `BookNO` int(11) NOT NULL,
   `ARRIVALDATE` date DEFAULT NULL,
@@ -85,10 +87,10 @@ CREATE TABLE `client_bookhall` (
 --
 -- Table structure for table `client_bookroom`
 --
--- Creation: Dec 24, 2021 at 09:32 AM
--- Last update: Dec 25, 2021 at 09:05 AM
+-- Creation: Dec 25, 2021 at 11:50 AM
 --
 
+DROP TABLE IF EXISTS `client_bookroom`;
 CREATE TABLE `client_bookroom` (
   `BookNO` int(11) NOT NULL,
   `ARRIVALDATE` date DEFAULT NULL,
@@ -118,9 +120,10 @@ INSERT INTO `client_bookroom` (`BookNO`, `ARRIVALDATE`, `DEPARTMENTDATE`, `RNO`,
 --
 -- Table structure for table `employee`
 --
--- Creation: Dec 24, 2021 at 09:32 AM
+-- Creation: Dec 25, 2021 at 11:50 AM
 --
 
+DROP TABLE IF EXISTS `employee`;
 CREATE TABLE `employee` (
   `EID` int(11) NOT NULL,
   `EPHONENO` varchar(40) DEFAULT NULL,
@@ -139,12 +142,13 @@ CREATE TABLE `employee` (
 --
 -- Table structure for table `hall`
 --
--- Creation: Dec 24, 2021 at 09:32 AM
+-- Creation: Dec 25, 2021 at 12:23 PM
 --
 
+DROP TABLE IF EXISTS `hall`;
 CREATE TABLE `hall` (
   `HNUM` int(11) NOT NULL,
-  `isOccupied` tinyint(1) DEFAULT NULL,
+  `isOccupied` varchar(10) DEFAULT NULL,
   `HNAME` varchar(32) DEFAULT NULL,
   `HPRICE` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -158,15 +162,16 @@ CREATE TABLE `hall` (
 --
 -- Table structure for table `reciept`
 --
--- Creation: Dec 24, 2021 at 09:32 AM
+-- Creation: Dec 25, 2021 at 12:22 PM
 --
 
+DROP TABLE IF EXISTS `reciept`;
 CREATE TABLE `reciept` (
   `cid` int(11) NOT NULL,
   `hallTotal` double DEFAULT NULL,
   `roomTotal` double DEFAULT NULL,
   `total` double DEFAULT NULL,
-  `hasPaid` tinyint(1) DEFAULT NULL,
+  `hasPaid` varchar(10) DEFAULT NULL,
   `paymentDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -181,10 +186,10 @@ CREATE TABLE `reciept` (
 --
 -- Table structure for table `room`
 --
--- Creation: Dec 24, 2021 at 09:29 AM
--- Last update: Dec 25, 2021 at 09:01 AM
+-- Creation: Dec 25, 2021 at 11:50 AM
 --
 
+DROP TABLE IF EXISTS `room`;
 CREATE TABLE `room` (
   `RNO` int(11) NOT NULL,
   `rprice` double DEFAULT NULL,
@@ -218,9 +223,10 @@ INSERT INTO `room` (`RNO`, `rprice`, `isOccupied`, `RFLOOR`, `RTYPE`, `isClean`,
 --
 -- Table structure for table `room_amenties`
 --
--- Creation: Dec 24, 2021 at 09:32 AM
+-- Creation: Dec 25, 2021 at 11:50 AM
 --
 
+DROP TABLE IF EXISTS `room_amenties`;
 CREATE TABLE `room_amenties` (
   `RA_ID` int(11) NOT NULL,
   `RNO` int(11) DEFAULT NULL,
@@ -322,7 +328,6 @@ ALTER TABLE `reciept`
 --
 ALTER TABLE `room_amenties`
   ADD CONSTRAINT `room_amenties_ibfk_1` FOREIGN KEY (`RNO`) REFERENCES `room` (`RNO`) ON DELETE CASCADE ON UPDATE CASCADE;
-SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
