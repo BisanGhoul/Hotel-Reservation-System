@@ -14,6 +14,19 @@ public class Room {
     private String AC;
     private String TV;
 
+    public Room(int ID, double price, String isOccupied, int floor, String type, String isClean, int numOfBeds, String wifi, String freeBreakfast, String AC, String TV) {
+        this.ID = ID;
+        this.price = price;
+        this.isOccupied = isOccupied;
+        this.floor = floor;
+        this.type = type;
+        this.isClean = isClean;
+        this.numOfBeds = numOfBeds;
+        this.wifi = wifi;
+        this.freeBreakfast = freeBreakfast;
+        this.AC = AC;
+        this.TV = TV;
+    }
 
     public Room(int ID, int floor) {
         this.ID = ID;

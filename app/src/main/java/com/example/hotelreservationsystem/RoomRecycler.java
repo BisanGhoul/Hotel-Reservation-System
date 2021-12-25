@@ -2,12 +2,10 @@ package com.example.hotelreservationsystem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -23,11 +21,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.os.Bundle;
 
 public class RoomRecycler extends AppCompatActivity {
 
-    private List<Room> items = new ArrayList<>();
+    private List<Room> roomsList = new ArrayList<>();
     private RecyclerView recycler;
     private static  final String BASE_URL = "http://10.0.2.2:80/project_mobile/filter_serach.php";
     @Override
@@ -48,31 +45,35 @@ public class RoomRecycler extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
-
-
                         try {
-
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i<array.length(); i++){
 
                                 JSONObject object = array.getJSONObject(i);
+                                //Room(int ID, double price, boolean isOccupied, int floor, String type, boolean isClean, int numOfBeds, int pic, boolean wifi, boolean freeBreakfast, boolean AC, boolean TV) {
+//[{"RA_ID":"1","RNO":"1","hasWifi":"y","hasFreeBreakfast":"y","hasAC":"y","hasTV":"y","rprice":"100","isOccupied":"y","RFLOOR":"2","RTYPE":"single","isClean":"y","bedsNum":"1"},
+                                int id = object.optInt("RNO");
+                                double price = object.optDouble("rprice");
+                                String isoccupiedStr= object.optString("isOccupied");
+                                int floor = object.optInt("RFLOOR");
+                                String type= object.optString("RTYPE");
+                                String isCleanStr= object.optString("isClean");
+                                int numofbeds = object.optInt("bedsNum");
+                                //int pic=object.optInt("RNO");
+                                String wifi= object.optString("hasWifi");
+                                String freeBreakfast= object.optString("hasFreeBreakfast");
+                                String AC= object.optString("hasAC");
+                                String TV= object.optString("hasTV");
 
-                                int name = object.getInt("RNO");
-                                int image = object.getInt("RFLOOR");
 
-
-
-                                Room pizza = new Room(name,image);
-                                items.add(pizza);
+                                Room room = new Room(id,price,isoccupiedStr,floor,type,isCleanStr,numofbeds,wifi,freeBreakfast,AC,TV);
+                                roomsList.add(room);
                             }
 
                         }catch (Exception e){
-
                         }
-
                         RoomRecyclerAdapter adapter = new RoomRecyclerAdapter(RoomRecycler.this,
-                                items);
+                                roomsList);
                         recycler.setAdapter(adapter);
 
                     }
@@ -80,13 +81,10 @@ public class RoomRecycler extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-
                 Toast.makeText(RoomRecycler.this, error.toString(),Toast.LENGTH_LONG).show();
-
             }
         });
-
-        Volley.newRequestQueue(RoomRecycler.this).add(stringRequest);
-
+        MySingleton.getInstance(this).addToRequestQueue(stringRequest);
+        //Volley.newRequestQueue(RoomRecycler.this).add(stringRequest);
     }
 }
