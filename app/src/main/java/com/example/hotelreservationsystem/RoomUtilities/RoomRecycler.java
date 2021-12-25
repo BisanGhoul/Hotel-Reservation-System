@@ -1,4 +1,4 @@
-package com.example.hotelreservationsystem;
+package com.example.hotelreservationsystem.RoomUtilities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,9 +12,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.hotelreservationsystem.Adapters.RoomRecyclerAdapter;
 import com.example.hotelreservationsystem.Model.Room;
+import com.example.hotelreservationsystem.MySingleton;
+import com.example.hotelreservationsystem.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

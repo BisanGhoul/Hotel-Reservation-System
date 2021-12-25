@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_reservation_details.xml" value="0.21458333333333332" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_room_details.xml" value="0.24270833333333333" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_room_recycler.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_room_recycler_adapter.xml" value="0.25729166666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.25625" />
