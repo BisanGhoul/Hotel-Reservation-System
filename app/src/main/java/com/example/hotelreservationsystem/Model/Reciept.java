@@ -7,10 +7,10 @@ public class Reciept {
     private double hallTotal;
     private double roomTotal;
     private double total;
-    private boolean hasPaid;
+    private String hasPaid;
     private LocalDate paymentDate;
 
-    public Reciept(int id, double hallTotal, double roomTotal, double total, boolean hasPaid, LocalDate paymentDate) {
+    public Reciept(int id, double hallTotal, double roomTotal, double total, String hasPaid, LocalDate paymentDate) {
         this.id = id;
         this.hallTotal = hallTotal;
         this.roomTotal = roomTotal;
@@ -51,11 +51,11 @@ public class Reciept {
         this.total = total;
     }
 
-    public boolean isHasPaid() {
+    public String getHasPaid() {
         return hasPaid;
     }
 
-    public void setHasPaid(boolean hasPaid) {
+    public void setHasPaid(String hasPaid) {
         this.hasPaid = hasPaid;
     }
 

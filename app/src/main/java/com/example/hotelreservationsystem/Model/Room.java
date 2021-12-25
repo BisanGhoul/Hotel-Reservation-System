@@ -3,16 +3,16 @@ package com.example.hotelreservationsystem.Model;
 public class Room {
     private int ID;
     private double price;
-    private boolean isOccupied;
+    private String isOccupied;
     private int floor;
     private String type;
-    private boolean isClean;
+    private String isClean;
     private int numOfBeds;
     private int pic;
-    private boolean wifi;
-    private boolean freeBreakfast;
-    private boolean AC;
-    private boolean TV;
+    private String wifi;
+    private String freeBreakfast;
+    private String AC;
+    private String TV;
 
 
     public Room(int ID, int floor) {
@@ -20,7 +20,7 @@ public class Room {
         this.floor = floor;
     }
 
-    public Room(int ID, double price, boolean isOccupied, int floor, String type, boolean isClean, int numOfBeds, int pic) {
+    public Room(int ID, double price, String isOccupied, int floor, String type, String isClean, int numOfBeds, int pic) {
         this.ID = ID;
         this.price = price;
         this.isOccupied = isOccupied;
@@ -31,7 +31,7 @@ public class Room {
         this.pic=pic;
     }
 
-    public Room(int ID, double price, boolean isOccupied, int floor, String type, boolean isClean, int numOfBeds, int pic, boolean wifi, boolean freeBreakfast, boolean AC, boolean TV) {
+    public Room(int ID, double price, String isOccupied, int floor, String type, String isClean, int numOfBeds, int pic, String wifi, String freeBreakfast, String AC, String TV) {
         this.ID = ID;
         this.price = price;
         this.isOccupied = isOccupied;
@@ -62,11 +62,11 @@ public class Room {
         this.price = price;
     }
 
-    public boolean isOccupied() {
+    public String isOccupied() {
         return isOccupied;
     }
 
-    public void setOccupied(boolean occupied) {
+    public void setOccupied(String occupied) {
         isOccupied = occupied;
     }
 
@@ -86,11 +86,11 @@ public class Room {
         this.type = type;
     }
 
-    public boolean isClean() {
+    public String isClean() {
         return isClean;
     }
 
-    public void setClean(boolean clean) {
+    public void setClean(String clean) {
         isClean = clean;
     }
 
@@ -102,35 +102,35 @@ public class Room {
         this.numOfBeds = numOfBeds;
     }
 
-    public boolean isWifi() {
+    public String getWifi() {
         return wifi;
     }
 
-    public void setWifi(boolean wifi) {
+    public void setWifi(String wifi) {
         this.wifi = wifi;
     }
 
-    public boolean isFreeBreakfast() {
+    public String getFreeBreakfast() {
         return freeBreakfast;
     }
 
-    public void setFreeBreakfast(boolean freeBreakfast) {
+    public void setFreeBreakfast(String freeBreakfast) {
         this.freeBreakfast = freeBreakfast;
     }
 
-    public boolean isAC() {
+    public String getAC() {
         return AC;
     }
 
-    public void setAC(boolean AC) {
+    public void setAC(String AC) {
         this.AC = AC;
     }
 
-    public boolean isTV() {
+    public String getTV() {
         return TV;
     }
 
-    public void setTV(boolean TV) {
+    public void setTV(String TV) {
         this.TV = TV;
     }
 

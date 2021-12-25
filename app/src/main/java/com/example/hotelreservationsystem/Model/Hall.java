@@ -2,11 +2,11 @@ package com.example.hotelreservationsystem.Model;
 
 public class Hall {
     private int id;
-    private boolean isOccupied;
+    private String isOccupied;
     private String name;
     private int price;
 
-    public Hall(int id, boolean isOccupied, String name, int price) {
+    public Hall(int id, String isOccupied, String name, int price) {
         this.id = id;
         this.isOccupied = isOccupied;
         this.name = name;
@@ -21,11 +21,11 @@ public class Hall {
         this.id = id;
     }
 
-    public boolean getOccupied() {
+    public String getOccupied() {
         return isOccupied;
     }
 
-    public void setOccupied(boolean occupied) {
+    public void setOccupied(String occupied) {
         isOccupied = occupied;
     }
 
