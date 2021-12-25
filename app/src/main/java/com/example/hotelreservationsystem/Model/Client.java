@@ -7,19 +7,29 @@ public class Client {
     private double ID;
     private String name;
     private String email;
+    private String password;
     private String nationality;
     private String gender;
     private LocalDate Birthday;
     private String phone;
 
-    public Client(double ID, String name, String email, String nationality, String gender, LocalDate birthday, String phone) {
+    public Client(double ID, String name, String email, String password, String nationality, String gender, LocalDate birthday, String phone) {
         this.ID = ID;
         this.name = name;
         this.email = email;
+        this.password=password;
         this.nationality = nationality;
         this.gender = gender;
         Birthday = birthday;
         this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public double getID() {
