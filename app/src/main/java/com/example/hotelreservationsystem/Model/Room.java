@@ -1,19 +1,26 @@
 package com.example.hotelreservationsystem.Model;
 
 public class Room {
-    private double ID;
+    private int ID;
     private double price;
     private boolean isOccupied;
     private int floor;
     private String type;
     private boolean isClean;
     private int numOfBeds;
+    private int pic;
     private boolean wifi;
     private boolean freeBreakfast;
     private boolean AC;
     private boolean TV;
 
-    public Room(double ID, double price, boolean isOccupied, int floor, String type, boolean isClean, int numOfBeds) {
+
+    public Room(int ID, int floor) {
+        this.ID = ID;
+        this.floor = floor;
+    }
+
+    public Room(int ID, double price, boolean isOccupied, int floor, String type, boolean isClean, int numOfBeds, int pic) {
         this.ID = ID;
         this.price = price;
         this.isOccupied = isOccupied;
@@ -21,9 +28,10 @@ public class Room {
         this.type = type;
         this.isClean = isClean;
         this.numOfBeds = numOfBeds;
+        this.pic=pic;
     }
 
-    public Room(double ID, double price, boolean isOccupied, int floor, String type, boolean isClean, int numOfBeds, boolean wifi, boolean freeBreakfast, boolean AC, boolean TV) {
+    public Room(int ID, double price, boolean isOccupied, int floor, String type, boolean isClean, int numOfBeds, int pic, boolean wifi, boolean freeBreakfast, boolean AC, boolean TV) {
         this.ID = ID;
         this.price = price;
         this.isOccupied = isOccupied;
@@ -35,13 +43,14 @@ public class Room {
         this.freeBreakfast = freeBreakfast;
         this.AC = AC;
         this.TV = TV;
+        this.pic=pic;
     }
 
-    public double getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(double ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -123,5 +132,13 @@ public class Room {
 
     public void setTV(boolean TV) {
         this.TV = TV;
+    }
+
+    public int getPic() {
+        return pic;
+    }
+
+    public void setPic(int pic) {
+        this.pic = pic;
     }
 }
