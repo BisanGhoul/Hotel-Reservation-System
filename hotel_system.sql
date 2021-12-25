@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2021 at 01:24 PM
+-- Generation Time: Dec 25, 2021 at 03:37 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -223,17 +223,18 @@ INSERT INTO `room` (`RNO`, `rprice`, `isOccupied`, `RFLOOR`, `RTYPE`, `isClean`,
 --
 -- Table structure for table `room_amenties`
 --
--- Creation: Dec 25, 2021 at 11:50 AM
+-- Creation: Dec 25, 2021 at 12:47 PM
+-- Last update: Dec 25, 2021 at 12:48 PM
 --
 
 DROP TABLE IF EXISTS `room_amenties`;
 CREATE TABLE `room_amenties` (
   `RA_ID` int(11) NOT NULL,
   `RNO` int(11) DEFAULT NULL,
-  `hasWifi` tinyint(1) DEFAULT NULL,
-  `hasFreeBreakfast` tinyint(1) DEFAULT NULL,
-  `hasAC` tinyint(1) DEFAULT NULL,
-  `hasTV` tinyint(1) DEFAULT NULL
+  `hasWifi` varchar(1) DEFAULT NULL,
+  `hasFreeBreakfast` varchar(1) DEFAULT NULL,
+  `hasAC` varchar(1) DEFAULT NULL,
+  `hasTV` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -241,6 +242,16 @@ CREATE TABLE `room_amenties` (
 --   `RNO`
 --       `room` -> `RNO`
 --
+
+--
+-- Dumping data for table `room_amenties`
+--
+
+INSERT INTO `room_amenties` (`RA_ID`, `RNO`, `hasWifi`, `hasFreeBreakfast`, `hasAC`, `hasTV`) VALUES
+(1, 1, 'y', 'y', 'y', 'y'),
+(2, 2, 'y', 'n', 'y', ''),
+(3, 3, 'y', 'y', 'y', 'y'),
+(4, 4, 'n', 'n', 'n', 'n');
 
 --
 -- Indexes for dumped tables
