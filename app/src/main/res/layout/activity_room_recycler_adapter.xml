@@ -6,43 +6,135 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="2dp">
+    card_view:cardCornerRadius="15dp"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="309dp">
-
-        <TextView
-            android:id="@+id/price_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/room_pic"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"
-            android:text="200 "
-            android:textSize="30dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/room_pic"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
+            android:visibility="visible"
             card_view:srcCompat="@drawable/ic_launcher_background" />
 
-        <TextView
-            android:id="@+id/txtName"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginBottom="4dp"
-            android:visibility="visible" />
+            android:layout_height="153dp">
 
-        <TextView
-            android:id="@+id/txtName2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:visibility="visible" />
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/ac_img"
+                android:layout_width="56dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="33dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintStart_toEndOf="@+id/breakfast_img"
+                card_view:layout_constraintTop_toBottomOf="@+id/price_txt"
+                card_view:layout_constraintVertical_bias="1.0"
+                card_view:srcCompat="@drawable/ac" />
+
+            <ImageView
+                android:id="@+id/breakfast_img"
+                android:layout_width="52dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="6dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toStartOf="@+id/ac_img"
+                card_view:layout_constraintStart_toEndOf="@+id/tv_img"
+                card_view:layout_constraintTop_toBottomOf="@+id/description_txt"
+                card_view:layout_constraintVertical_bias="0.4"
+                card_view:srcCompat="@drawable/english_breakfast" />
+
+            <TextView
+                android:id="@+id/price_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200 $"
+                android:textColor="#C10000"
+                android:textSize="30dp"
+                android:visibility="visible"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.956"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintVertical_bias="0.061" />
+
+            <TextView
+                android:id="@+id/roomtype_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" single Room"
+                android:textColor="@color/icon_color"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.031"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintVertical_bias="0.058" />
+
+            <TextView
+                android:id="@+id/description_txt"
+                android:layout_width="223dp"
+                android:layout_height="wrap_content"
+                android:scrollHorizontally="false"
+                android:text="this room is on floor 2, and it has 2 beds"
+                android:textColor="@color/icon_color"
+                android:textSize="15dp"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.108"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/roomtype_txt"
+                card_view:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/tv_img"
+                android:layout_width="53dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="visible"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toStartOf="@+id/breakfast_img"
+                card_view:layout_constraintStart_toEndOf="@+id/wifi_img"
+                card_view:layout_constraintTop_toBottomOf="@+id/description_txt"
+                card_view:srcCompat="@drawable/tv_show" />
+
+            <ImageView
+                android:id="@+id/wifi_img"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="visible"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toStartOf="@+id/tv_img"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/description_txt"
+                card_view:srcCompat="@drawable/wifi2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
 </androidx.cardview.widget.CardView>
