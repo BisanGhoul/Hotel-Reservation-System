@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:layout_margin="20dp"
-    card_view:cardElevation="2dp"
     card_view:cardCornerRadius="4dp"
-    >
+    card_view:cardElevation="2dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="309dp">
 
         <TextView
+            android:id="@+id/price_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/room_pic"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:text="200 "
+            android:textSize="30dp" />
+
+        <ImageView
+            android:id="@+id/room_pic"
             android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            card_view:srcCompat="@drawable/ic_launcher_background" />
+
+        <TextView
             android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginBottom="4dp"
-            android:layout_height="wrap_content" />
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/txtName2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="" />
-    </LinearLayout>
+            android:text=""
+            android:visibility="visible" />
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>
