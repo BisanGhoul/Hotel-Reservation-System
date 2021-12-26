@@ -2,5 +2,27 @@
     <string name="app_name">Hotel Reservation System</string>
     <string name="amenities">Amenities</string>
     <string name="book_now">Book Now</string>
+    <string name="show_booking_details">Show Booking Details</string>
+    <string name="wifi">wifi</string>
+    <string name="tv">TV</string>
+    <string name="ac">AC</string>
+    <string name="free_breakfast">Free Breakfast</string>
+    <string name="minimum_price">Minimum Price</string>
+    <string name="maximum_price">Maximum Price</string>
+    <string name="search">Search</string>
+
+    <string-array name="room_type">
+        <item>single</item>
+        <item>double</item>
+        <item>suite</item>
+    </string-array>
+
+    <string-array name="beds">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 
 </resources>

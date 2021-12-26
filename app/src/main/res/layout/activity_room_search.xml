@@ -1,13 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp"
     tools:context=".RoomUtilities.RoomSearch">
 
+    <Button
+        android:id="@+id/datepickerSearch_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Pick Booking Interval" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_marginTop="15dp">
+
+        <LinearLayout
+            android:id="@+id/min_relative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.249"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.333">
+
+            <TextView
+                android:id="@+id/miniprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/minimum_price" />
+
+            <EditText
+                android:id="@+id/minprice_txt"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+
+                android:ems="10"
+                android:hint="00.00"
+                android:inputType="numberDecimal"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/max_relative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.789"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.333">
+
+            <TextView
+                android:id="@+id/maxiprrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/maximum_price" />
+
+            <EditText
+                android:id="@+id/maxprice_txt"
+                android:layout_width="81dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:ems="10"
+                android:hint="500.00"
+                android:inputType="numberDecimal"
+
+                android:textAlignment="center" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/floor_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="1"
+        android:layout_marginTop="15dp"
+        android:inputType="number" />
+
     <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="313dp"
-        android:layout_height="45dp" />
-</RelativeLayout>
+        android:id="@+id/type_spinner"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/room_type"
+        android:layout_marginTop="15dp"/>
+
+    <Spinner
+        android:id="@+id/beds_spinner"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/beds"
+        android:layout_marginTop="15dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="7dp"
+        android:layout_marginTop="22dp">
+
+        <LinearLayout
+
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/wifi_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wifi" />
+
+            <CheckBox
+                android:id="@+id/tv_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv" />
+
+            <CheckBox
+                android:id="@+id/ac_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ac" />
+
+            <CheckBox
+                android:id="@+id/freebk_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/free_breakfast" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/searchGo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        android:layout_marginTop="15dp"/>
+
+</LinearLayout>

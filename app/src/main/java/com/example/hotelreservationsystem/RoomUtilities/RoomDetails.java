@@ -8,7 +8,7 @@ import android.os.Bundle;
 import com.example.hotelreservationsystem.R;
 
 public class RoomDetails extends AppCompatActivity {
-
+    // TODO: 12/26/2021 centralize styling for amenities 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
