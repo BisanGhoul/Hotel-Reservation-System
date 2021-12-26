@@ -15,6 +15,9 @@
         android:theme="@style/Theme.HotelReservationSystem"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".RoomUtilities.RoomSearch"
+            android:exported="false" />
+        <activity
             android:name=".RoomUtilities.ReservationDetails"
             android:exported="false" />
         <activity
