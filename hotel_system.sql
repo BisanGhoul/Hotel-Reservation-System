@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2021 at 06:03 PM
+-- Generation Time: Jan 09, 2022 at 12:00 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -54,7 +54,6 @@ CREATE TABLE `client_bookhall` (
 -- Table structure for table `client_bookroom`
 --
 -- Creation: Dec 25, 2021 at 11:50 AM
--- Last update: Dec 26, 2021 at 09:31 AM
 --
 
 DROP TABLE IF EXISTS `client_bookroom`;
@@ -134,7 +133,6 @@ CREATE TABLE `reciept` (
 -- Table structure for table `room`
 --
 -- Creation: Dec 25, 2021 at 11:50 AM
--- Last update: Dec 26, 2021 at 09:37 AM
 --
 
 DROP TABLE IF EXISTS `room`;
@@ -172,7 +170,6 @@ INSERT INTO `room` (`RNO`, `rprice`, `isOccupied`, `RFLOOR`, `RTYPE`, `isClean`,
 -- Table structure for table `room_amenties`
 --
 -- Creation: Dec 25, 2021 at 03:38 PM
--- Last update: Dec 26, 2021 at 09:37 AM
 --
 
 DROP TABLE IF EXISTS `room_amenties`;
@@ -205,8 +202,8 @@ INSERT INTO `room_amenties` (`RNO`, `hasWifi`, `hasFreeBreakfast`, `hasAC`, `has
 --
 -- Table structure for table `user`
 --
--- Creation: Dec 26, 2021 at 04:59 PM
--- Last update: Dec 26, 2021 at 05:02 PM
+-- Creation: Jan 09, 2022 at 10:15 AM
+-- Last update: Jan 09, 2022 at 10:15 AM
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -217,7 +214,6 @@ CREATE TABLE `user` (
   `password` varchar(30) NOT NULL,
   `CNATIONALITY` varchar(32) DEFAULT NULL,
   `CGENDER` varchar(32) DEFAULT NULL,
-  `CBIRTH` date DEFAULT NULL,
   `CPHONE` varchar(32) DEFAULT NULL,
   `type` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -230,12 +226,12 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`CID`, `CNAME`, `email`, `password`, `CNATIONALITY`, `CGENDER`, `CBIRTH`, `CPHONE`, `type`) VALUES
-(211864444, 'Jamal Mohammad', 'jamal20@gmail.com', '123', 'Egyptian', 'male', '2000-11-20', '0247168346', 'client'),
-(211867844, 'Sara Murad', 'saram@gmail.com', '1234', 'Egyptian', 'female', '1997-11-20', '0247168346', 'client'),
-(211869008, 'Rana Issa', 'rana@gmail.com', '123', 'Egyptian', 'female', '2002-11-20', '0247168346', 'client'),
-(211869202, 'Ahmad Ali', 'ahmadali@gmail.com', '123', 'Palestinian', 'male', '1996-10-10', '0569794857', 'client'),
-(211899999, 'admin admin', 'admin@gmail.com', '123', 'palestinian', 'male', '1990-12-30', '0599999999', 'admin');
+INSERT INTO `user` (`CID`, `CNAME`, `email`, `password`, `CNATIONALITY`, `CGENDER`, `CPHONE`, `type`) VALUES
+(211864444, 'Jamal Mohammad', 'jamal20@gmail.com', '123', 'Egyptian', 'male', '0247168346', 'client'),
+(211867844, 'Sara Murad', 'saram@gmail.com', '1234', 'Egyptian', 'female', '0247168346', 'client'),
+(211869008, 'Rana Issa', 'rana@gmail.com', '123', 'Egyptian', 'female', '0247168346', 'client'),
+(211869202, 'Ahmad Ali', 'ahmadali@gmail.com', '123', 'Palestinian', 'male', '0569794857', 'client'),
+(211899999, 'admin admin', 'admin@gmail.com', '123', 'palestinian', 'male', '0599999999', 'admin');
 
 --
 -- Indexes for dumped tables
