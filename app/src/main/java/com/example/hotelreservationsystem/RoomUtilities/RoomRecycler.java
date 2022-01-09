@@ -27,7 +27,7 @@ public class RoomRecycler extends AppCompatActivity {
 
     private List<Room> roomsList = new ArrayList<>();
     private RecyclerView recycler;
-    private static  final String BASE_URL = "http://10.0.2.2:80/project_mobile/filter_serach.php";
+    private static  final String BASE_URL = "http://10.0.2.2:80/project_mobile/get_rooms.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

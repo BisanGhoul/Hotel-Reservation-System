@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,6 +93,7 @@ public class RoomRecyclerAdapter
                 // TODO: 12/26/2021 detailed activity
 
                 Intent roomDetail = new Intent(context, RoomDetails.class);
+//                roomDetail.putextra("room object", room);
                 roomDetail.putExtra("wifi",room.getWifi());
                 roomDetail.putExtra("ac",room.getAC());
                 roomDetail.putExtra("tv",room.getTV());
@@ -102,7 +104,7 @@ public class RoomRecyclerAdapter
                 roomDetail.putExtra("floor",room.getFloor());
 
                 context.startActivity(roomDetail);
-
+                Log.e("price",String.valueOf(room.getPrice()));
 
             }
         });

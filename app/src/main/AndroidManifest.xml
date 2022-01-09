@@ -30,10 +30,10 @@
             android:name=".Adapters.RoomRecyclerAdapter"
             android:exported="false" />
         <activity
-            android:name=".RoomUtilities.RoomRecycler"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".RoomUtilities.RoomRecycler"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
