@@ -10,18 +10,26 @@ public class Client {
     private String password;
     private String nationality;
     private String gender;
-    private LocalDate Birthday;
     private String phone;
+    public String type;
 
-    public Client(double ID, String name, String email, String password, String nationality, String gender, LocalDate birthday, String phone) {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Client(double ID, String name, String email, String password, String nationality, String gender, String phone, String type) {
         this.ID = ID;
         this.name = name;
         this.email = email;
         this.password=password;
         this.nationality = nationality;
         this.gender = gender;
-        Birthday = birthday;
         this.phone = phone;
+        this.type=type;
     }
 
     public String getPassword() {
@@ -72,13 +80,6 @@ public class Client {
         this.gender = gender;
     }
 
-    public LocalDate getBirthday() {
-        return Birthday;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        Birthday = birthday;
-    }
 
     public String getPhone() {
         return phone;
