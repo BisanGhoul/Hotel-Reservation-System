@@ -2,16 +2,21 @@ package com.example.hotelreservationsystem.Model;
 
 import java.time.LocalDate;
 
-public class Client {
+public class User {
 
-    private double ID;
+    private String ID;
     private String name;
     private String email;
     private String password;
     private String nationality;
     private String gender;
     private String phone;
-    public String type;
+    private String type;
+
+    public User(String ID, String name) {
+        this.ID = ID;
+        this.name = name;
+    }
 
     public String getType() {
         return type;
@@ -21,7 +26,7 @@ public class Client {
         this.type = type;
     }
 
-    public Client(double ID, String name, String email, String password, String nationality, String gender, String phone, String type) {
+    public User(String ID, String name, String email, String password, String nationality, String gender, String phone, String type) {
         this.ID = ID;
         this.name = name;
         this.email = email;
@@ -40,11 +45,11 @@ public class Client {
         this.password = password;
     }
 
-    public double getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(double ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

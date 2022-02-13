@@ -1,5 +1,6 @@
 package com.example.hotelreservationsystem.Adapters;
 // TODO: 12/26/2021 sql query for search
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -21,6 +22,13 @@ import java.util.List;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+/*
+==================================================
+==      made by Bisan El Gool - 11181116        ==
+==================================================
+*/
+
 
 public class RoomRecyclerAdapter
             extends RecyclerView.Adapter<RoomRecyclerAdapter.ViewHolder>{
@@ -94,6 +102,7 @@ public class RoomRecyclerAdapter
 
                 Intent roomDetail = new Intent(context, RoomDetails.class);
 //                roomDetail.putextra("room object", room);
+                roomDetail.putExtra("rno",room.getID());
                 roomDetail.putExtra("wifi",room.getWifi());
                 roomDetail.putExtra("ac",room.getAC());
                 roomDetail.putExtra("tv",room.getTV());

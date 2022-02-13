@@ -14,6 +14,10 @@
     <string name="has_tv">Has TV</string>
     <string name="has_air_conditioning">Has Air Conditioning</string>
     <string name="offers_free_breakfast">Offers Free Breakfast</string>
+    <string name="number_of_beds">Number Of Beds</string>
+    <string name="floor">floor</string>
+    <string name="room_type">Room Type</string>
+    <string name="filter">Filter</string>
 
     <string-array name="room_type">
         <item>single</item>
@@ -22,6 +26,7 @@
     </string-array>
 
     <string-array name="beds">
+        <item>All</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -29,4 +34,37 @@
         <item>5</item>
     </string-array>
 
+    <string-array name="floor">
+        <item>All</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="room_type_dropdown">
+        <item>All</item>
+        <item>single</item>
+        <item>double</item>
+        <item>suite</item>
+    </string-array>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string-array name="Gender">
+        <item>female</item>
+        <item>male</item>
+    </string-array>
+    <string-array name="type">
+        <item>client</item>
+        <item>admin</item>
+        <item>receptionist</item>
+    </string-array>
 </resources>

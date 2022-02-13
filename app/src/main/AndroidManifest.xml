@@ -15,13 +15,34 @@
         android:theme="@style/Theme.HotelReservationSystem"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".RoomUtilities.RoomReserve"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.CheckInOUTCustomer"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.ReservationRecycler"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.UsersRecycler"
+            android:exported="false" />
+        <activity
+            android:name=".Adapters.UsersRecyclerAdapter"
+            android:exported="false" />
+        <activity
             android:name=".RoomUtilities.RoomSearch"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".RoomUtilities.ReservationDetails"
             android:exported="false" />
         <activity
-            android:name=".RoomUtilities.RoomReserve"
+            android:name=".Admin.ChangeRoomStatus"
             android:exported="false" />
         <activity
             android:name=".RoomUtilities.RoomDetails"
@@ -30,10 +51,10 @@
             android:name=".Adapters.RoomRecyclerAdapter"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".RoomUtilities.RoomRecycler"
             android:exported="false" />
         <activity
-            android:name=".RoomUtilities.RoomRecycler"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

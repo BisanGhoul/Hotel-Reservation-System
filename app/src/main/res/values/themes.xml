@@ -1,6 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.HotelReservationSystem" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.HotelReservationSystem" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- android:textColorSecondary is the color of the menu overflow icon (three vertical dots) -->
+        <item name="android:textColorSecondary">@color/white</item>
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,6 +15,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:actionMenuTextColor">@color/default_blue</item>
+        //add these two line scripts and it will work properly
+
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">?attr/actionBarSize</item>
     </style>
 
     <style name="Theme.HotelReservationSystem.NoActionBar">
@@ -22,4 +30,6 @@
     <style name="Theme.HotelReservationSystem.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.HotelReservationSystem.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>

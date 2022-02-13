@@ -5,7 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -13,36 +19,79 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.hotelreservationsystem.Adapters.RoomRecyclerAdapter;
+import com.example.hotelreservationsystem.Login;
 import com.example.hotelreservationsystem.Model.Room;
+import com.example.hotelreservationsystem.Model.User;
 import com.example.hotelreservationsystem.MySingleton;
 import com.example.hotelreservationsystem.R;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+==================================================
+==      made by Bisan El Gool - 11181116        ==
+==================================================
+*/
+// TODO: 1/10/2022 button filter doesnt work 
 public class RoomRecycler extends AppCompatActivity {
-
+    Button btn;
     private List<Room> roomsList = new ArrayList<>();
     private RecyclerView recycler;
-    private static  final String BASE_URL = "http://10.0.2.2:80/project_mobile/get_rooms.php";
+    private static final String BASE_URL = "http://10.0.2.2:80/project_mobile/get_rooms.php";
+    private static final String FILTER_URL = "http://10.0.2.2:80/project_mobile/all_rooms.php";
+
+    SharedPreferences mPrefs;
+    SharedPreferences.Editor prefsEditor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_recycler);
 
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefsEditor = mPrefs.edit();
+        User user = new Gson().fromJson(mPrefs.getString("USER_INFO", null), User.class);
+
+
+        Toast.makeText(RoomRecycler.this, user.getName(),
+                Toast.LENGTH_SHORT).show();
+
+        btn = (Button) findViewById(R.id.filter_btn);
         recycler = findViewById(R.id.rooms_recycler);
-
-
         recycler.setLayoutManager(new LinearLayoutManager(this));
-        loadItems();
+//        String sessionId = getIntent().getStringExtra("url");
+//        if(sessionId==(null)) {
+//            loadItems(BASE_URL);
+//        }else{
+//            loadItems(sessionId);
+        loadItems(BASE_URL);
+        RoomRecyclerAdapter adapter = new RoomRecyclerAdapter(RoomRecycler.this,
+                roomsList);
+        recycler.setAdapter(adapter);
+//        }
     }
 
-    private void loadItems() {
+//    btn.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            //Perform your action here
+//        }
+//    });
+    public void loadItems2(View view) {
+        Intent intent = new Intent(getBaseContext(), RoomSearch.class);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, BASE_URL,
+        startActivity(intent);
+
+
+    }
+
+
+    private void loadItems(String url) {
+        roomsList.clear();
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -66,16 +115,14 @@ public class RoomRecycler extends AppCompatActivity {
                                 String AC= object.optString("hasAC");
                                 String TV= object.optString("hasTV");
 
-
+                                Log.e("id room", String.valueOf(id));
                                 Room room = new Room(id,price,isoccupiedStr,floor,type,isCleanStr,numofbeds,wifi,freeBreakfast,AC,TV);
                                 roomsList.add(room);
                             }
 
                         }catch (Exception e){
                         }
-                        RoomRecyclerAdapter adapter = new RoomRecyclerAdapter(RoomRecycler.this,
-                                roomsList);
-                        recycler.setAdapter(adapter);
+
 
                     }
                 }, new Response.ErrorListener() {

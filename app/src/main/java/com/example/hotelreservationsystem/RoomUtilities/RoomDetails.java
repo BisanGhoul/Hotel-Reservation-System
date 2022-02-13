@@ -9,7 +9,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.hotelreservationsystem.R;
-
+/*
+==================================================
+==      made by Bisan El Gool - 11181116        ==
+==================================================
+*/
 public class RoomDetails extends AppCompatActivity {
     // TODO: 12/26/2021 centralize styling for amenities
 
@@ -22,6 +26,7 @@ public class RoomDetails extends AppCompatActivity {
     TextView ac_txt;
     TextView bk_txt_det;
 
+    String roomNum;
     String wifi;
     String ac ;
     String tv;
@@ -49,7 +54,7 @@ public class RoomDetails extends AppCompatActivity {
         Intent intent = getIntent();
         wifi = intent.getStringExtra("wifi");
         ac = intent.getStringExtra("ac");
-
+roomNum= intent.getStringExtra("rno");
         tv = intent.getStringExtra("tv");
         breakfast = intent.getStringExtra("breakfast");
         price = intent.getDoubleExtra("price",price);
@@ -103,4 +108,9 @@ public class RoomDetails extends AppCompatActivity {
 
 
 
+    public void goToReserveRoom(View view) {
+        Intent intent1 = new Intent(this,RoomReserve.class);
+        intent1.putExtra("ROOM_RNO",roomNum);
+        startActivity(intent1);
+    }
 }
