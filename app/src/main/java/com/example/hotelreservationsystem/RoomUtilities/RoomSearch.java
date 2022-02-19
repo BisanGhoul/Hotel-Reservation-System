@@ -43,6 +43,7 @@ import java.util.Date;
 import java.util.List;
 
 // TODO: 1/14/2022 all case search
+// TODO: 2/19/2022 fix search recycler 
 /*
 ==================================================
 ==      made by Bisan El Gool - 11181116        ==
@@ -58,7 +59,7 @@ public class RoomSearch extends AppCompatActivity {
     MaterialDatePicker.Builder<Pair<Long, Long>> builder;
     MaterialDatePicker picker;
 
-    SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+    SharedPreferences mPrefs;
     SharedPreferences.Editor prefsEditor;
 
     private TextView arrival_date;
@@ -82,7 +83,8 @@ public class RoomSearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_search);
-
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefsEditor = mPrefs.edit();
 //        String date="Mar 10, 2016 6:30:00 PM";
 //        SimpleDateFormat spf=new SimpleDateFormat("MMM dd, yyyy hh:mm:ss aaa");
 //        Date newDate= null;
@@ -132,7 +134,7 @@ public class RoomSearch extends AppCompatActivity {
 
 //set variables of 'myObject', etc.
 
-        prefsEditor = mPrefs.edit();
+        
         Gson gson = new Gson();
 
         picker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Pair<Long, Long>>() {

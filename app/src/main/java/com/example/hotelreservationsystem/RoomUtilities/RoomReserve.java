@@ -31,6 +31,7 @@ import org.json.JSONArray;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// TODO: 2/19/2022 remove set isoccuied in web service, it should be changed in check in
 /*
 ==================================================
 ==      made by Bisan El Gool - 1181116        ==
@@ -55,6 +56,7 @@ public class RoomReserve extends AppCompatActivity {
     private TextView arrival_date2;
     private TextView department_date2;
 
+    private static final String ROOM_NUM = "1";
 
 
     @Override
@@ -83,8 +85,10 @@ public class RoomReserve extends AppCompatActivity {
 //        setDatePicker();
         initDatePicker();
         Intent intent = getIntent();
-        room_id = intent.getStringExtra("ROOM_RNO");
-
+        // TODO: 2/19/2022 change it back to shared prefs
+       // room_id = intent.getStringExtra("ROOM_RNO");
+        room_id = ROOM_NUM;
+        user_id = "211867844";
 
     }
 //    @Override

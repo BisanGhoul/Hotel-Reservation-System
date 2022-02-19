@@ -41,6 +41,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+// TODO: 2/19/2022 add title and validation 
 public class Login extends AppCompatActivity {
     private TextView Signup;
     private EditText edtemail;

@@ -1,5 +1,6 @@
 package com.example.hotelreservationsystem.RoomUtilities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -24,6 +26,8 @@ import com.example.hotelreservationsystem.Model.Room;
 import com.example.hotelreservationsystem.Model.User;
 import com.example.hotelreservationsystem.MySingleton;
 import com.example.hotelreservationsystem.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -71,6 +75,24 @@ public class RoomRecycler extends AppCompatActivity {
         RoomRecyclerAdapter adapter = new RoomRecyclerAdapter(RoomRecycler.this,
                 roomsList);
         recycler.setAdapter(adapter);
+
+        BottomNavigationView bottomNav = findViewById(R.id.btm_nav_bar);
+        bottomNav.setSelectedItemId(R.id.home_menu);
+        bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+
+                    case(R.id.home_menu):
+                        return true;
+
+                    case(R.id.search_menu):
+                        startActivity(new Intent(getApplicationContext(),RoomSearch.class));
+                        return true;
+                }
+                return false;
+            }
+        });
 //        }
     }
 

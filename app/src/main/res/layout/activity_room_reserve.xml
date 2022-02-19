@@ -8,7 +8,9 @@
     <include
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar" />
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="131dp"
@@ -102,5 +104,16 @@
             android:layout_margin="10dp"
             android:text="Pick Booking Interval" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/reserve_room_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="bookRoom"
+        android:text="Book room"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

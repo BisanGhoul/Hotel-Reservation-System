@@ -15,7 +15,10 @@
         android:theme="@style/Theme.HotelReservationSystem"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".RoomUtilities.RoomReserve"
+            android:name=".AddAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".Register"
@@ -54,7 +57,7 @@
             android:name=".RoomUtilities.RoomRecycler"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".RoomUtilities.RoomReserve"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
