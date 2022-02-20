@@ -1,5 +1,6 @@
 package com.example.hotelreservationsystem.RoomUtilities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.Pair;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,9 +30,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.hotelreservationsystem.Adapters.RoomRecyclerAdapter;
 import com.example.hotelreservationsystem.Model.Room;
 import com.example.hotelreservationsystem.MySingleton;
+import com.example.hotelreservationsystem.Profile;
 import com.example.hotelreservationsystem.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -54,6 +59,7 @@ public class RoomSearch extends AppCompatActivity {
     private static final String BASE_URL = "http://10.0.2.2:80/project_mobile/filter_search.php";
     private List<Room> roomsList = new ArrayList<>();
     private RecyclerView recycler;
+    private static final String FROM_SEARCH = "SEARCH";
 
     private Button datePicker;
     MaterialDatePicker.Builder<Pair<Long, Long>> builder;
@@ -85,18 +91,26 @@ public class RoomSearch extends AppCompatActivity {
         setContentView(R.layout.activity_room_search);
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefsEditor = mPrefs.edit();
-//        String date="Mar 10, 2016 6:30:00 PM";
-//        SimpleDateFormat spf=new SimpleDateFormat("MMM dd, yyyy hh:mm:ss aaa");
-//        Date newDate= null;
-//        try {
-//            newDate = spf.parse(date);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        spf= new SimpleDateFormat("dd MMM yyyy");
-//        date = spf.format(newDate);
-//        System.out.println(date);
 
+        BottomNavigationView bottomNav = findViewById(R.id.btm_nav_bar);
+        bottomNav.setSelectedItemId(R.id.home_menu);
+        bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+
+                    case(R.id.home_menu):
+                    startActivity(new Intent(getApplicationContext(),RoomRecycler.class));
+                    return true;
+                    case(R.id.search_menu):
+                        return true;
+                    case(R.id.profile_menu):
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        return true;
+                }
+                return false;
+            }
+        });
 
         initViews();
         populateDropDownMenues();
@@ -106,66 +120,12 @@ public class RoomSearch extends AppCompatActivity {
 
     }
 
-    private void getPriceRange() {
-        minPriceStr = String.valueOf(minprice_txt.getText());
-        maxPriceStr = String.valueOf(maxprice_txt.getText());
-    }
 
     private void initViews() {
         arrival_date = findViewById(R.id.arrival_date);
         department_date = findViewById(R.id.department_date);
         minprice_txt = findViewById(R.id.minprice_txt);
         maxprice_txt = findViewById(R.id.maxprice_txt);
-    }
-
-    private void initDatePicker() {
-        datePicker = findViewById(R.id.datepickerSearch_btn);
-//        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
-        builder = MaterialDatePicker.Builder.dateRangePicker();
-
-        picker = builder.build();
-        datePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                picker.show(getSupportFragmentManager(), "DATE_PICKER");
-            }
-        });
-
-//set variables of 'myObject', etc.
-
-        
-        Gson gson = new Gson();
-
-        picker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Pair<Long, Long>>() {
-            @Override
-            public void onPositiveButtonClick(Pair<Long, Long> selection) {
-
-                androidx.core.util.Pair<Long,Long> selectionObj;
-                selectionObj=selection;
-                Long startDate = selection.first;
-                Long endDate = selection.second;
-
-                //2022-01-12 -> sql date format
-                SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date date1 = new Date(startDate);
-                arrivalDate = simpleFormat.format(date1);
-                arrival_date.setText(arrivalDate);
-                SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyy-MM-dd");
-
-                Date date2 = new Date(endDate);
-                departmentDate = simpleFormat2.format(date2);
-                department_date.setText(departmentDate);
-
-                Toast.makeText(RoomSearch.this, "selected date:" + simpleFormat.format(date1), Toast.LENGTH_SHORT).show();
-
-                String json1 = gson.toJson(selection);
-                prefsEditor.putString("DATE_PICKER", json1);
-                prefsEditor.commit();
-            }
-        });
-
-
     }
 
     private void populateDropDownMenues() {
@@ -183,7 +143,7 @@ public class RoomSearch extends AppCompatActivity {
             @Override
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+
                 bedsStr = bedsNum[(position)];
                 Toast.makeText(RoomSearch.this, bedsStr, Toast.LENGTH_SHORT).show();
 
@@ -226,6 +186,59 @@ public class RoomSearch extends AppCompatActivity {
         });
 
 
+    }
+
+    private void initDatePicker() {
+        datePicker = findViewById(R.id.datepickerSearch_btn);
+        builder = MaterialDatePicker.Builder.dateRangePicker();
+        picker = builder.build();
+
+        datePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                picker.show(getSupportFragmentManager(), "DATE_PICKER");
+            }
+        });
+
+        Gson gson = new Gson();
+
+        picker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Pair<Long, Long>>() {
+            @Override
+            public void onPositiveButtonClick(Pair<Long, Long> selection) {
+
+                androidx.core.util.Pair<Long,Long> selectionObj;
+                selectionObj=selection;
+                Long startDate = selection.first;
+                Long endDate = selection.second;
+
+                //2022-01-12 -> sql date format
+                SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date date1 = new Date(startDate);
+                arrivalDate = simpleFormat.format(date1);
+                arrival_date.setText(arrivalDate);
+                SimpleDateFormat simpleFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+
+                Date date2 = new Date(endDate);
+                departmentDate = simpleFormat2.format(date2);
+                department_date.setText(departmentDate);
+
+                Toast.makeText(RoomSearch.this, "selected date:" + simpleFormat.format(date1), Toast.LENGTH_SHORT).show();
+
+                String json1 = gson.toJson(selection);
+                prefsEditor.putString("DATE_PICKER", json1);
+                prefsEditor.putBoolean("FROM_SEARCH", true);
+
+                prefsEditor.commit();
+            }
+        });
+
+
+    }
+
+    private void getPriceRange() {
+        minPriceStr = String.valueOf(minprice_txt.getText());
+        maxPriceStr = String.valueOf(maxprice_txt.getText());
     }
 
     public void wifiCheckBox(View v) {
@@ -279,8 +292,10 @@ public class RoomSearch extends AppCompatActivity {
         getPriceRange();
         String url = BASE_URL + "?minprice="+minPriceStr+"&maxprice="+maxPriceStr+"&floor="+floorStr+"&type="+typeStr+"&clean=y"+"&beds="
                 +bedsStr+"&wifi="+wifiStr+"&bk="+bkStr+"&ac="+acStr+"&tv="+tvStr+"&arrival="+arrivalDate+"&department="+departmentDate;
-        Intent intent = new Intent(getBaseContext(), RoomRecycler.class);
-        intent.putExtra("url", url);
+//        String  url="http://10.0.2.2:80/project_mobile/filter_search.php?minprice=100&maxprice=500&floor=2&type=single&clean=y&beds=1&wifi=y&bk=n&ac=y&tv=n&arrival=2022-04-08&department=2022-04-15";
+        Log.e("room search url", url);
+        Intent intent = new Intent(RoomSearch.this, RoomRecycler.class);
+        intent.putExtra("SEARCH_URL", url);
         startActivity(intent);
 
     }

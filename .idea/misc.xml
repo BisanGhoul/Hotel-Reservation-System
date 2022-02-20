@@ -8,11 +8,16 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/drawable/ic_home.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/drawable/ic_profile.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/drawable/selector.xml" value="0.2890625" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_add_admin.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_add_room.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_add_room_aminities.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_change_room_status.xml" value="0.25729166666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_check_in_customer.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_check_in_out_customer.xml" value="0.21240942028985507" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_login.xml" value="0.25729166666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_main_admin.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_profile.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_recycler_room.xml" value="0.15208333333333332" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_register.xml" value="0.25729166666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_reservation_details.xml" value="0.21458333333333332" />

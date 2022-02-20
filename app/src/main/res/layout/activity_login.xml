@@ -11,7 +11,15 @@ android:orientation="vertical">
     android:layout_height="170dp"
     android:layout_gravity="center" />
 
-<EditText
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log In"
+        android:textAlignment="center"
+        android:textSize="30dp" />
+
+    <EditText
     android:id="@+id/edtemaillogin"
     android:layout_width="300sp"
     android:layout_height="50sp"

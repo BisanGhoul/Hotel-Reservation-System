@@ -30,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hotelreservationsystem.Admin.MainAdminActivity;
 import com.example.hotelreservationsystem.Model.User;
 import com.example.hotelreservationsystem.RoomUtilities.RoomRecycler;
 import com.google.gson.Gson;
@@ -46,14 +47,9 @@ public class Login extends AppCompatActivity {
     private TextView Signup;
     private EditText edtemail;
     private EditText edtpass;
-//    private CheckBox Remember;
+    //    private CheckBox Remember;
     private Button Sign_In;
     private User user;
-    private SharedPreferences prefs;
-    private SharedPreferences.Editor editor;
-    private static final String EMAIL = "EMAIL";
-    private static final String PASS = "PASS";
-    private static final String FLAG = "FLAG";
 
     private static final String USER_INFO = "USER_INFO";
     private static final String REGISTERED_USER = "REGISTERED_USER";
@@ -67,6 +63,7 @@ public class Login extends AppCompatActivity {
 
     String email;
     String password;
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -74,6 +71,7 @@ public class Login extends AppCompatActivity {
         prefsEditor = mPrefs.edit();
         prefsEditor.putBoolean(IS_LOGGED_IN, false);
         prefsEditor.commit();
+
         //check is user was redirected from register page
         isRegistered = mPrefs.getBoolean(REGISTERED_USER, false);
         if (isRegistered == false) {
@@ -83,12 +81,7 @@ public class Login extends AppCompatActivity {
             edtemail.setText(user.getEmail());
             edtpass.setText(user.getPassword());
         }
-//        SharedPreferences pref = getSharedPreferences("edtrem",MODE_PRIVATE);
-//        String StayLogIN = pref.getString("StayLogIN","");
-//        if(StayLogIN.equals("true")){
-//               Intent intent = new Intent(this,admin.class);
-//               startActivity(intent);
-//        }
+
     }
 
     @Override
@@ -112,23 +105,21 @@ public class Login extends AppCompatActivity {
     }
 
 
-    public void logIn (View view){
-//        if(validateInput()){
-            signInuser();
-//        Log.e("infoprint2","done "+responseUser.getID()+responseUser.getName());
+    public void logIn(View view) {
 
-//        if (responseUser==null)
-//            {
-//                Toast.makeText(this, "Invlaid email or password! please try again.", Toast.LENGTH_SHORT).show();
+        signInuser();
 
-//            }else {
-//                setUpPref();
-                goToMain();
-//            }
-//        }else{
-//            Toast.makeText(this, "Invlaid email or password! please try again.", Toast.LENGTH_SHORT).show();
-
+//        if (user == null) {
+//            Toast.makeText(Login.this, "Fatal error. Account not found!", Toast.LENGTH_SHORT).show();
+//            return;
 //        }
+//
+//        if (user.getType().equals("client")) {
+//            goToMain();
+//        } else {
+//            goToAdminMain();
+//        }
+
 
     }
 
@@ -138,33 +129,10 @@ public class Login extends AppCompatActivity {
 
     }
 
+    private void goToAdminMain() {
+        Intent intent = new Intent(getBaseContext(), MainAdminActivity.class);
+        startActivity(intent);
 
-    private void setUpPref() {
-        Gson gson = new Gson();
-        String json1 = gson.toJson(responseUser);
-        prefsEditor.putString(USER_INFO, json1);
-        prefsEditor.putBoolean(IS_LOGGED_IN,true);
-        prefsEditor.commit();
-    }
-
-
-    private boolean validateInput() {
-         email = edtemail.getText().toString();
-        email.trim();
-         password = edtpass.getText().toString();
-        password.trim();
-        boolean valid=true;
-        if(email.isEmpty()||email.equals(null)||email.equals("")){
-            Toast.makeText(this, "Invlaid email!", Toast.LENGTH_SHORT).show();
-            valid=false;
-//            return;
-        }
-        if(password.isEmpty()||password.equals(null)||password.equals("")||!(password.matches(PASS_PATTERN))){
-            Toast.makeText(this, "Invlaid email!", Toast.LENGTH_SHORT).show();
-            valid=false;
-//            return;
-        }
-        return valid;
     }
 
 
@@ -173,46 +141,87 @@ public class Login extends AppCompatActivity {
         email.trim();
         password = edtpass.getText().toString();
         password.trim();
-            String url = "http://10.0.2.2:80/project_mobile/login.php?email=" + email + "&password=" + password;
-            Log.e("urlprint",url);
-            StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String output) {
+        String url = "http://10.0.2.2:80/project_mobile/login.php?email=" + email + "&password=" + password;
+        Log.e("urlprint", url);
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String output) {
 
-                    try {
-//{","email":"jamal20@gmail.com","password":"123","CNATIONALITY":"Egyptian","CGENDER":"male","CPHONE":"0247168346","type":"client"}
-                        JSONObject object = new JSONObject(output);
-                        String id = object.optString("CID");
-                        String name= object.optString("CNAME");
-                        String email= object.optString("email");
-                        String password= object.optString("password");
-                        String CNATIONALITY= object.optString("CNATIONALITY");
-                        String CGENDER= object.optString("CGENDER");
-                        String CPHONE= object.optString("CPHONE");
-                        String type= object.optString("type");
-//    public User(String ID, String name, String email, String password, String nationality, String gender, String phone, String type) {
-                        User responseUser = new User(id,name,email,password,CNATIONALITY,CGENDER,CPHONE,type);
-                        Log.e("infoprint","done "+id+responseUser.getID()+responseUser.getName());
-//                        Toast.makeText(Login.this, "done "+object.toString()+responseUser.getID()+responseUser.getName(),
-//                                Toast.LENGTH_SHORT).show();
-                        Gson gson = new Gson();
-                        String json1 = gson.toJson(responseUser);
-                        prefsEditor.putString(USER_INFO, json1);
-                        prefsEditor.putBoolean(IS_LOGGED_IN,true);
-                        prefsEditor.commit();
-                    }catch (Exception e){
+                try {
+                    JSONObject object = new JSONObject(output);
+                    String id = object.optString("CID");
+                    String name = object.optString("CNAME");
+                    String email = object.optString("email");
+                    String password = object.optString("password");
+                    String CNATIONALITY = object.optString("CNATIONALITY");
+                    String CGENDER = object.optString("CGENDER");
+                    String CPHONE = object.optString("CPHONE");
+                    String type = object.optString("type");
+
+                    User responseUser = new User(id, name, email, password, CNATIONALITY, CGENDER, CPHONE, type);
+
+                    Gson gson = new Gson();
+                    String json1 = gson.toJson(responseUser);
+                    prefsEditor.putString(USER_INFO, json1);
+                    prefsEditor.putBoolean(IS_LOGGED_IN, true);
+                    prefsEditor.commit();
+
+                    Gson gson2 = new Gson();
+                    user = gson2.fromJson(mPrefs.getString(USER_INFO, null), User.class);
+                    if (user == null) {
+                        Toast.makeText(Login.this, "Fatal error. Account not found!", Toast.LENGTH_SHORT).show();
+                        return;
                     }
+
+                    if (user.getType().equals("client")) {
+                        goToMain();
+                    } else {
+                        goToAdminMain();
+                    }
+                } catch (Exception e) {
                 }
+            }
 
-            },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
-                            Toast.makeText(Login.this, error.toString(),
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    });
-            MySingleton.getInstance(this).addToRequestQueue(request);
+                        Toast.makeText(Login.this, error.toString(),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+        MySingleton.getInstance(this).addToRequestQueue(request);
     }
+
+
+
+//    private void setUpPref() {
+//        Gson gson = new Gson();
+//        String json1 = gson.toJson(responseUser);
+//        prefsEditor.putString(USER_INFO, json1);
+//        prefsEditor.putBoolean(IS_LOGGED_IN, true);
+//        prefsEditor.commit();
+//    }
+//
+//
+//    private boolean validateInput() {
+//        email = edtemail.getText().toString();
+//        email.trim();
+//        password = edtpass.getText().toString();
+//        password.trim();
+//        boolean valid = true;
+//        if (email.isEmpty() || email.equals(null) || email.equals("")) {
+//            Toast.makeText(this, "Invlaid email!", Toast.LENGTH_SHORT).show();
+//            valid = false;
+////            return;
+//        }
+//        if (password.isEmpty() || password.equals(null) || password.equals("") || !(password.matches(PASS_PATTERN))) {
+//            Toast.makeText(this, "Invlaid email!", Toast.LENGTH_SHORT).show();
+//            valid = false;
+////            return;
+//        }
+//        return valid;
+//    }
+
 }

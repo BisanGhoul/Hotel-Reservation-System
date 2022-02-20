@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.hotelreservationsystem.R;
+
 /*
 ==================================================
 ==      made by Bisan El Gool - 11181116        ==
@@ -28,7 +29,7 @@ public class RoomDetails extends AppCompatActivity {
 
     String roomNum;
     String wifi;
-    String ac ;
+    String ac;
     String tv;
     String breakfast;
     double price;
@@ -46,21 +47,20 @@ public class RoomDetails extends AppCompatActivity {
         populateViews();
 
 
-
-
     }
-    public void getIntents(){
+
+    public void getIntents() {
 
         Intent intent = getIntent();
         wifi = intent.getStringExtra("wifi");
         ac = intent.getStringExtra("ac");
-roomNum= intent.getStringExtra("rno");
+        roomNum = (intent.getStringExtra("rno"));
         tv = intent.getStringExtra("tv");
         breakfast = intent.getStringExtra("breakfast");
-        price = intent.getDoubleExtra("price",price);
-        beds = intent.getIntExtra("beds",beds);
+        price = intent.getDoubleExtra("price", price);
+        beds = intent.getIntExtra("beds", beds);
         type = intent.getStringExtra("type");
-        floor = intent.getIntExtra("floor",floor);
+        floor = intent.getIntExtra("floor", floor);
 //        Log.e("details price", price);
     }
 
@@ -97,20 +97,19 @@ roomNum= intent.getStringExtra("rno");
     }
 
     private void setViews() {
-         roomtypeDetail_txt = findViewById(R.id.roomtypeDetail_txt);
-         descDetail_txt = findViewById(R.id.descDetail_txt);
-         priceDet_txt = findViewById(R.id.priceDet_txt);
-         wifi_txt = findViewById(R.id.wifi_txt);
-         tv_txt = findViewById(R.id.tv_txt);
-         ac_txt = findViewById(R.id.ac_txt);
-         bk_txt_det = findViewById(R.id.bk_txt_det);
+        roomtypeDetail_txt = findViewById(R.id.roomtypeDetail_txt);
+        descDetail_txt = findViewById(R.id.descDetail_txt);
+        priceDet_txt = findViewById(R.id.priceDet_txt);
+        wifi_txt = findViewById(R.id.wifi_txt);
+        tv_txt = findViewById(R.id.tv_txt);
+        ac_txt = findViewById(R.id.ac_txt);
+        bk_txt_det = findViewById(R.id.bk_txt_det);
     }
 
 
-
     public void goToReserveRoom(View view) {
-        Intent intent1 = new Intent(this,RoomReserve.class);
-        intent1.putExtra("ROOM_RNO",roomNum);
+        Intent intent1 = new Intent(this, RoomReserve.class);
+        intent1.putExtra("ROOM_RNO", roomNum);
         startActivity(intent1);
     }
 }

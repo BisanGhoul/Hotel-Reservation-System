@@ -1,5 +1,5 @@
-package com.example.hotelreservationsystem;
-// TODO: 1/15/2022 validate 
+package com.example.hotelreservationsystem.Admin;
+// TODO: 1/15/2022 validate
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,11 +28,14 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.hotelreservationsystem.Login;
 import com.example.hotelreservationsystem.Model.User;
+import com.example.hotelreservationsystem.MySingleton;
+import com.example.hotelreservationsystem.R;
 import com.google.gson.Gson;
 
 
-public class Register extends AppCompatActivity {
+public class AddAdmin extends AppCompatActivity {
 
     SharedPreferences mPrefs;
     SharedPreferences.Editor prefsEditor;
@@ -52,7 +55,7 @@ public class Register extends AppCompatActivity {
     private Spinner type;
     private Button Register;
     private TextView txtResult;
-//REGISTERED_USER
+    //REGISTERED_USER
     String idStr;
     int userid;
     String NameCStr;
@@ -63,41 +66,30 @@ public class Register extends AppCompatActivity {
     String phoneStr;
     String TypeStr;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    prefsEditor.putBoolean(IS_LOGGED_IN,false);
-    prefsEditor.putBoolean(REGISTERED_USER,false);
-    prefsEditor.commit();
-    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        prefsEditor = mPrefs.edit();
+        setContentView(R.layout.activity_add_admin);
+
         setUpViews();
 
     }
 
     public void setUpViews() {
-        ID = findViewById(R.id.edtID);
-        Name = findViewById(R.id.edtName);
-        edtemail = findViewById(R.id.edtemail);
-        edtpass = findViewById(R.id.edtpassword);
-        gender = findViewById(R.id.spinnergender);
-        Nationality = findViewById(R.id.edtnationality);
-        phoneNumber = findViewById(R.id.edtphonenumber);
-//        type = findViewById(R.id.spinnertype);
-        Register = findViewById(R.id.btnregDone);
-        txtResult = findViewById(R.id.txtResult);
+        ID = findViewById(R.id.edtAdminID);
+        Name = findViewById(R.id.edtAdminName);
+        edtemail = findViewById(R.id.edtAdminemail);
+        edtpass = findViewById(R.id.edtAdminpassword);
+        gender = findViewById(R.id.spinnerAdmingender);
+        Nationality = findViewById(R.id.edtAdminnationality);
+        phoneNumber = findViewById(R.id.edtAdminphonenumber);
+        Register = findViewById(R.id.btnAdminregDone);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.Gender, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gender.setAdapter(adapter);
-
     }
 
     private void setValues(){
@@ -115,8 +107,9 @@ public class Register extends AppCompatActivity {
 
     public void signUp(View v){
         setValues();
-        AddUser(userid, NameCStr, emailStr, passwordStr, NationalStr, GStr, phoneStr,"client");
-        goToLogin();
+        AddUser(userid, NameCStr, emailStr, passwordStr, NationalStr, GStr, phoneStr,"admin");
+        Toast.makeText(AddAdmin.this,
+                "Admin has been added succesfully!", Toast.LENGTH_SHORT).show();
     }
     private void AddUser(int id,String NameC,String Email,String password,String National,String G,String phone,String Type)
     {
@@ -128,8 +121,7 @@ public class Register extends AppCompatActivity {
                 Log.e("TAG", "RESPONSE IS " + response);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    // on below line we are displaying a success toast message.
-                    Toast.makeText(Register.this,
+                    Toast.makeText(AddAdmin.this,
                             jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -140,14 +132,12 @@ public class Register extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // method to handle errors.
-                Toast.makeText(Register.this,
+                Toast.makeText(AddAdmin.this,
                         "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
             public String getBodyContentType() {
-                // as we are passing data in the form of url encoded
-                // so we are passing the content type below
                 return "application/x-www-form-urlencoded; charset=UTF-8";
             }
 
@@ -164,72 +154,13 @@ public class Register extends AppCompatActivity {
                 params.put("type", Type);
 
                 User responseUser = new User(String.valueOf(id),NameC,Email,password,NationalStr,G,phone,Type);
-                Gson gson = new Gson();
-                String json1 = gson.toJson(responseUser);
-                prefsEditor.putString(USER_INFO, json1);
-                prefsEditor.putBoolean(IS_LOGGED_IN,false);
-                prefsEditor.putBoolean(REGISTERED_USER,true);
-                prefsEditor.commit();
-                // at last we are returning our params.
                 return params;
             }
 
         };
+
         MySingleton.getInstance(this).addToRequestQueue(request);
     }
 
-
-
-    public void goToLogin(View view){
-        Intent intent = new Intent(getBaseContext(), Login.class);
-
-        startActivity(intent);
-    }
-    public void goToLogin(){
-        Intent intent = new Intent(getBaseContext(), Login.class);
-
-        startActivity(intent);
-    }
-
-//    public void GoToRegister(View view) {
-//
-//         idStr = ID.getText().toString();
-//         userid = Integer.parseInt(idStr);
-//         NameCStr = Name.getText().toString();
-////         Email = email.getText().toString();
-////         Password = password.getText().toString();
-//         NationalStr = Nationality.getText().toString();
-//         GStr = gender.getSelectedItem().toString();
-//         phoneStr = phoneNumber.getText().toString();
-////         Type = type.getSelectedItem().toString();
-//        AddUser(userid, NameCStr, emailStr, passwordStr, NationalStr, GStr, phoneStr,"client");
-////   public User(String ID, String name, String email, String password, String nationality, String gender, String phone, String type) {
-//
-//        Gson gson = new Gson();
-//
-//            User user= new User(idStr, NameCStr, emailStr, passwordStr, NationalStr, GStr, phoneStr,"client");
-//
-//        String json1 = gson.toJson(user);
-//        prefsEditor.putString(USER_INFO, json1);
-//        prefsEditor.putBoolean(REGISTERED_USER,true);
-//        prefsEditor.commit();
-//        Intent intent = new Intent(getBaseContext(), Login.class);
-//
-//        startActivity(intent);
-//
-////        if(String.valueOf(id).length()!=10){
-////            Toast.makeText(Register.this, "not valid ID",
-////                    Toast.LENGTH_SHORT).show();
-////        }
-////        else if(phone.length()!=10){
-////            Toast.makeText(Register.this, "not valid phone number",
-////                    Toast.LENGTH_SHORT).show();
-////        }
-////        else{
-////
-////        }
-//
-//
-//    }
 
 }

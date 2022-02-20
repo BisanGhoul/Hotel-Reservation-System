@@ -13,16 +13,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.hotelreservationsystem.GlideApp;
 import com.example.hotelreservationsystem.Model.Room;
 import com.example.hotelreservationsystem.R;
 import com.example.hotelreservationsystem.RoomUtilities.RoomDetails;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
+import static android.provider.Settings.System.AIRPLANE_MODE_ON;
 /*
 ==================================================
 ==      made by Bisan El Gool - 11181116        ==
@@ -55,8 +57,9 @@ public class RoomRecyclerAdapter
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Room room = items.get(position);
         CardView cardView = holder.cardView;
-     //  ImageView imageView = (ImageView) cardView.findViewById(R.id.room_pic);
-//        Glide.with(context).load(room.getImage()).into(imageView);
+       ImageView imageView = (ImageView) cardView.findViewById(R.id.room_pic);
+        Picasso.with(context).load("https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg").into(imageView);
+        Log.e("pic link", room.getPic());
         //get views
         TextView type_txt = (TextView)cardView.findViewById(R.id.roomtype_txt);
         TextView desc_txt = (TextView)cardView.findViewById(R.id.description_txt);
@@ -102,7 +105,7 @@ public class RoomRecyclerAdapter
 
                 Intent roomDetail = new Intent(context, RoomDetails.class);
 //                roomDetail.putextra("room object", room);
-                roomDetail.putExtra("rno",room.getID());
+                roomDetail.putExtra("rno",String.valueOf(room.getID()));
                 roomDetail.putExtra("wifi",room.getWifi());
                 roomDetail.putExtra("ac",room.getAC());
                 roomDetail.putExtra("tv",room.getTV());

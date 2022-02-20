@@ -8,7 +8,7 @@ public class Room {
     private String type;
     private String isClean;
     private int numOfBeds;
-    private int pic;
+    private String pic;
     private String wifi;
     private String freeBreakfast;
     private String AC;
@@ -33,7 +33,7 @@ public class Room {
         this.floor = floor;
     }
 
-    public Room(int ID, double price, String isOccupied, int floor, String type, String isClean, int numOfBeds, int pic) {
+    public Room(int ID, double price, String isOccupied, int floor, String type, String isClean, int numOfBeds, String pic) {
         this.ID = ID;
         this.price = price;
         this.isOccupied = isOccupied;
@@ -44,7 +44,7 @@ public class Room {
         this.pic=pic;
     }
 
-    public Room(int ID, double price, String isOccupied, int floor, String type, String isClean, int numOfBeds, int pic, String wifi, String freeBreakfast, String AC, String TV) {
+    public Room(int ID, double price, String isOccupied, int floor, String type, String isClean, int numOfBeds, String pic, String wifi, String freeBreakfast, String AC, String TV) {
         this.ID = ID;
         this.price = price;
         this.isOccupied = isOccupied;
@@ -147,11 +147,11 @@ public class Room {
         this.TV = TV;
     }
 
-    public int getPic() {
+    public String getPic() {
         return pic;
     }
 
-    public void setPic(int pic) {
+    public void setPic(String pic) {
         this.pic = pic;
     }
 }

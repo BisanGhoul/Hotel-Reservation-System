@@ -25,6 +25,7 @@ import com.example.hotelreservationsystem.Login;
 import com.example.hotelreservationsystem.Model.Room;
 import com.example.hotelreservationsystem.Model.User;
 import com.example.hotelreservationsystem.MySingleton;
+import com.example.hotelreservationsystem.Profile;
 import com.example.hotelreservationsystem.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -50,28 +51,53 @@ public class RoomRecycler extends AppCompatActivity {
 
     SharedPreferences mPrefs;
     SharedPreferences.Editor prefsEditor;
+
+    String url;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        url = BASE_URL;
+//        Intent intent = getIntent();
+//        try {
+//            url = intent.getStringExtra("SEARCH_URL");
+//            Log.e("roomrecycler url", url);
+//        }catch (Exception e){
+//            Log.e("erorr","null exception");
+//        }
+//        if(url.equals(null)){
+//            url = BASE_URL;
+//        }else{
+////            url = intent.getStringExtra("SEARCH_URL");
+//        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_recycler);
 
+        url = BASE_URL;
+        Intent intent = getIntent();
+        try {
+            url = intent.getStringExtra("SEARCH_URL");
+        }catch (Exception e){
+            Log.e("erorr","null exception");
+        }
+        if(url==null||url.equals(null)||url.equals("")||url.isEmpty()){
+            url = BASE_URL;
+        }else{
+//            url = intent.getStringExtra("SEARCH_URL");
+        }
+
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefsEditor = mPrefs.edit();
         User user = new Gson().fromJson(mPrefs.getString("USER_INFO", null), User.class);
 
-
-        Toast.makeText(RoomRecycler.this, user.getName(),
-                Toast.LENGTH_SHORT).show();
-
         btn = (Button) findViewById(R.id.filter_btn);
         recycler = findViewById(R.id.rooms_recycler);
         recycler.setLayoutManager(new LinearLayoutManager(this));
-//        String sessionId = getIntent().getStringExtra("url");
-//        if(sessionId==(null)) {
-//            loadItems(BASE_URL);
-//        }else{
-//            loadItems(sessionId);
-        loadItems(BASE_URL);
+        loadItems(url);
         RoomRecyclerAdapter adapter = new RoomRecyclerAdapter(RoomRecycler.this,
                 roomsList);
         recycler.setAdapter(adapter);
@@ -89,19 +115,16 @@ public class RoomRecycler extends AppCompatActivity {
                     case(R.id.search_menu):
                         startActivity(new Intent(getApplicationContext(),RoomSearch.class));
                         return true;
+
+                    case(R.id.profile_menu):
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        return true;
                 }
                 return false;
             }
         });
-//        }
     }
 
-//    btn.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            //Perform your action here
-//        }
-//    });
     public void loadItems2(View view) {
         Intent intent = new Intent(getBaseContext(), RoomSearch.class);
 
@@ -122,8 +145,6 @@ public class RoomRecycler extends AppCompatActivity {
                             for (int i = 0; i<array.length(); i++){
 
                                 JSONObject object = array.getJSONObject(i);
-                                //Room(int ID, double price, boolean isOccupied, int floor, String type, boolean isClean, int numOfBeds, int pic, boolean wifi, boolean freeBreakfast, boolean AC, boolean TV) {
-//[{"RA_ID":"1","RNO":"1","hasWifi":"y","hasFreeBreakfast":"y","hasAC":"y","hasTV":"y","rprice":"100","isOccupied":"y","RFLOOR":"2","RTYPE":"single","isClean":"y","bedsNum":"1"},
                                 int id = object.optInt("RNO");
                                 double price = object.optDouble("rprice");
                                 String isoccupiedStr= object.optString("isOccupied");
@@ -131,14 +152,15 @@ public class RoomRecycler extends AppCompatActivity {
                                 String type= object.optString("RTYPE");
                                 String isCleanStr= object.optString("isClean");
                                 int numofbeds = object.optInt("bedsNum");
-                                //int pic=object.optInt("RNO");
+                                String pic=object.optString("link");
                                 String wifi= object.optString("hasWifi");
                                 String freeBreakfast= object.optString("hasFreeBreakfast");
                                 String AC= object.optString("hasAC");
                                 String TV= object.optString("hasTV");
 
-                                Log.e("id room", String.valueOf(id));
+                                Log.e("roomrecycler pic", pic);
                                 Room room = new Room(id,price,isoccupiedStr,floor,type,isCleanStr,numofbeds,wifi,freeBreakfast,AC,TV);
+                                room.setPic(pic);
                                 roomsList.add(room);
                             }
 
@@ -155,6 +177,5 @@ public class RoomRecycler extends AppCompatActivity {
             }
         });
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
-        //Volley.newRequestQueue(RoomRecycler.this).add(stringRequest);
     }
 }

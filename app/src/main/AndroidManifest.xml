@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hotelreservationsystem">
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,13 +18,25 @@
         android:theme="@style/Theme.HotelReservationSystem"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".AddAdmin"
+            android:name=".Admin.AddRoomAminities"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Admin.AddRoom"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".Admin.MainAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".RoomUtilities.RoomSearch"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.UsersRecycler"
+            android:exported="false" />
+        <activity
+            android:name=".RoomUtilities.RoomReserve"
             android:exported="false" />
         <activity
             android:name=".Admin.CheckInOUTCustomer"
@@ -30,13 +45,13 @@
             android:name=".Admin.ReservationRecycler"
             android:exported="false" />
         <activity
-            android:name=".Admin.UsersRecycler"
+            android:name=".Admin.AddAdmin"
             android:exported="false" />
         <activity
             android:name=".Adapters.UsersRecyclerAdapter"
             android:exported="false" />
         <activity
-            android:name=".RoomUtilities.RoomSearch"
+            android:name=".Register"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -48,16 +63,16 @@
             android:name=".Admin.ChangeRoomStatus"
             android:exported="false" />
         <activity
-            android:name=".RoomUtilities.RoomDetails"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".Adapters.RoomRecyclerAdapter"
             android:exported="false" />
         <activity
-            android:name=".RoomUtilities.RoomRecycler"
+            android:name=".RoomUtilities.RoomDetails"
             android:exported="false" />
         <activity
-            android:name=".RoomUtilities.RoomReserve"
+            android:name=".RoomUtilities.RoomRecycler"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
