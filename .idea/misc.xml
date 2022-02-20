@@ -7,7 +7,9 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/drawable/ic_home.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/drawable/ic_profile.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/drawable/profile_style.xml" value="0.2890625" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/drawable/selector.xml" value="0.2890625" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/acticity_main2.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_add_admin.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_add_room.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_add_room_aminities.xml" value="0.20833333333333334" />
@@ -34,6 +36,7 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/activity_users_recycler_adapter.xml" value="0.25729166666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/dropdown_beds_num.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/dropdown_floor.xml" value="0.1484375" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/movie_item.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/nav_header.xml" value="0.15208333333333332" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/layout/tool_bar.xml" value="0.15208333333333332" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/HotelReservationSystem/app/src/main/res/menu/bottom_nav.xml" value="0.25729166666666664" />

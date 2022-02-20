@@ -77,10 +77,10 @@ public class RoomReserve extends AppCompatActivity {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         initViews();
 
-        boolean fromSearch = mPrefs.getBoolean("FROM_SEARCH", false);
-        if (fromSearch == true) {
-            setDatePicker();
-        }
+//        boolean fromSearch = mPrefs.getBoolean("FROM_SEARCH", false);
+//        if (fromSearch == true) {
+//            setDatePicker();
+//        }
 
         initDatePicker();
         Intent intent = getIntent();

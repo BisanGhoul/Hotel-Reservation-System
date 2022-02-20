@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hotelreservationsystem.R;
+import com.squareup.picasso.Picasso;
 
 /*
 ==================================================
@@ -36,6 +38,7 @@ public class RoomDetails extends AppCompatActivity {
     int beds;
     String type;
     int floor;
+    String pic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +64,14 @@ public class RoomDetails extends AppCompatActivity {
         beds = intent.getIntExtra("beds", beds);
         type = intent.getStringExtra("type");
         floor = intent.getIntExtra("floor", floor);
+        pic = intent.getStringExtra("pic");
 //        Log.e("details price", price);
     }
 
     private void populateViews() {
 
-
+        ImageView imageView = (ImageView)findViewById(R.id.roomimgpic);
+        Picasso.with(RoomDetails.this).load(pic).into(imageView);
         if (type.equals("suite")) {
             roomtypeDetail_txt.setText(type);
             descDetail_txt.setText("this " + type + " is on floor " + floor + ", & it has " + beds + " beds.");

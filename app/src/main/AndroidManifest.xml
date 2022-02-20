@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hotelreservationsystem">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,6 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelReservationSystem"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".MovieActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Adapters.Adaptery"
+            android:exported="false" />
         <activity
             android:name=".Admin.AddRoomAminities"
             android:exported="false" />
@@ -63,7 +70,7 @@
             android:name=".Admin.ChangeRoomStatus"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".RoomUtilities.RoomRecycler"
             android:exported="false" />
         <activity
             android:name=".Adapters.RoomRecyclerAdapter"
@@ -72,7 +79,7 @@
             android:name=".RoomUtilities.RoomDetails"
             android:exported="false" />
         <activity
-            android:name=".RoomUtilities.RoomRecycler"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

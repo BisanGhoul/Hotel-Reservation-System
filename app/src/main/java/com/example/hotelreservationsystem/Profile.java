@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hotelreservationsystem.Admin.MainAdminActivity;
 import com.example.hotelreservationsystem.Model.User;
 import com.example.hotelreservationsystem.RoomUtilities.RoomRecycler;
 import com.example.hotelreservationsystem.RoomUtilities.RoomSearch;
@@ -95,7 +96,10 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(Profile.this,Login.class);
         startActivity(intent);
     }
-
+    public void showMovies(View view) {
+        Intent intent = new Intent(Profile.this, MovieActivity.class);
+        startActivity(intent);
+    }
     public void update(View view) {
     }
 

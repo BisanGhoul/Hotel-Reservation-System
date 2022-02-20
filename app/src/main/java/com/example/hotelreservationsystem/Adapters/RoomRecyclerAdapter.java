@@ -58,7 +58,7 @@ public class RoomRecyclerAdapter
         final Room room = items.get(position);
         CardView cardView = holder.cardView;
        ImageView imageView = (ImageView) cardView.findViewById(R.id.room_pic);
-        Picasso.with(context).load("https://media.geeksforgeeks.org/wp-content/cdn-uploads/logo-new-2.svg").into(imageView);
+        Picasso.with(context).load(room.getPic()).into(imageView);
         Log.e("pic link", room.getPic());
         //get views
         TextView type_txt = (TextView)cardView.findViewById(R.id.roomtype_txt);
@@ -114,6 +114,7 @@ public class RoomRecyclerAdapter
                 roomDetail.putExtra("beds",room.getNumOfBeds());
                 roomDetail.putExtra("type",room.getType());
                 roomDetail.putExtra("floor",room.getFloor());
+                roomDetail.putExtra("pic",room.getPic());
 
                 context.startActivity(roomDetail);
                 Log.e("price",String.valueOf(room.getPrice()));

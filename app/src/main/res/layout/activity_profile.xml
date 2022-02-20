@@ -4,86 +4,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".data.model.profile">
+    tools:context=".Profile">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="30dp">
 
-        <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="142dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="45dp"
-            android:foregroundGravity="center"
-            android:gravity="center"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="100dp"
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
+            android:paddingBottom="20dp"
+            android:text="Full Name:"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvfullname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="100dp"
-                    android:paddingBottom="20dp"
-                    android:text="Full Name "
-                    android:textSize="25sp"
+        <TextView
+            android:id="@+id/tvfullname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingBottom="20dp"
+            android:text="Full Name "
+            android:textSize="20sp"
 
-                    android:textStyle="bold" />
-            </LinearLayout>
+            android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="100dp"
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp" />
+            android:paddingBottom="20dp"
+            android:text="email:"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvemail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Wiliam@gmail.com"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+        <TextView
+            android:id="@+id/tvemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingBottom="20dp"
+            android:text="email:"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="100dp"
+            android:paddingBottom="20dp"
+            android:text="Phone:"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp" />
+        <TextView
+            android:id="@+id/tvphonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="100dp"
 
-                <TextView
-                    android:id="@+id/tvphonenumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="+266 225 225"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-
-        </LinearLayout>
+            android:paddingBottom="20dp"
+            android:text="email:"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnupdateprofile"
@@ -96,6 +93,15 @@
             android:text="update profile Information" />
 
         <Button
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:onClick="showMovies"
+            android:text="view Movies" />
+
+        <Button
             android:id="@+id/btnLogout"
             android:layout_width="300sp"
             android:layout_height="wrap_content"
@@ -105,17 +111,17 @@
             android:onClick="Dologout"
             android:text="Logout" />
 
-        <Button
-            android:id="@+id/btndeleteprofile"
-            android:layout_width="300sp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="35dp"
-            android:foregroundGravity="center"
-            android:gravity="center"
-            android:onClick="deleteprofile"
-            android:text="delete profile"
-            android:textColor="#fff" />
+        <!--        <Button-->
+        <!--            android:id="@+id/btndeleteprofile"-->
+        <!--            android:layout_width="300sp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginTop="35dp"-->
+        <!--            android:foregroundGravity="center"-->
+        <!--            android:gravity="center"-->
+        <!--            android:onClick="deleteprofile"-->
+        <!--            android:text="delete profile"-->
+        <!--            android:textColor="#fff" />-->
 
     </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
